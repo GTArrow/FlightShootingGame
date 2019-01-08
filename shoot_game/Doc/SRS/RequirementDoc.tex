@@ -1,0 +1,421 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{booktabs}
+\usepackage{ulem}
+\usepackage{tabularx}
+\usepackage{cite}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{hyperref}
+\usepackage{color}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{}
+
+\title{SE 3XA3: Software Requirements Documentation Revision1\\Project: Flight Shooting Game}
+
+\author{Team 15, \emph{CLOUD10}
+		\\ Yijun Chen cheny161
+		\\ Tianxing Li lit20
+		\\ Zefeng Wang wangz217
+}
+
+\date{October 5, 2018}
+
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{DATE}&\textbf{DEVELOPER}&\textbf{CHANGE}&\textbf{REVISION} \\
+    \hline
+    October 5, 2018&Yijun Chen&Initial Draft&0\\
+    \hline
+     October 5, 2018&Tianxing Li&Initial Draft&0\\
+    \hline
+     October 5, 2018&Zefeng Wang&Initial Draft&0\\
+    \hline
+     Decemeber 4, 2018&Yijun Chen&Revision &1\\
+    \hline
+    December 4, 2018&Zefeng Wang & Revision &1\\
+    \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Project Drivers}
+
+\subsection{The Purpose of the Project}
+\subsubsection{The background of the project}
+\sout{With the rapid development in the mobile technology, most Mobile Game Development Companies are competing with each other through 3D, 4D, and high-quality graphics games, while 8-bits graphic-style games are getting not popular in supply.}{\color{red} With the rapid development in the technology, most Game Development Companies are competing with each other through 3D, 4D, and high-quality graphics games, while 8-bits graphic-style games are getting not popular in supply.} However, in the market, there is a huge portion of the users who want to play the 8-bits games. Majority of them are born in the 80s or 90s. They think the retro games evoke their childhood nostalgia.\cite{b2} ”Pixel art games aren't retro, they're the future\cite{b1},” says by the verge magazine, which also believes no matter however advance computer design software becomes, there always be gamers thirsty for the retro games. Our motivation to make this project is to bring back this classic element to the mobile market once again. The project will be based on the original Flight Shooting Game. With adding Pyxel library, the whole game is redeveloped and becomes 8-bits graphic-style.
+\subsubsection{Goal of the project}
+Our project is an entertainment-driven experience for users who desire to review the classic. The first goal is creating a python game similar to the original flight shooting game using Pyxel library which transfers the game to the 8-bits style. {\color{red}Secondly, designing new features and interface }Thirdly, documenting all processes during the creation for our clients to view. In that case, they will have a brief introduction to the game and know how to play when they access the product.
+\subsection{The Stakeholders}
+\subsubsection{The Client}
+The client of our product is an external entity who plays an important role as final reviewer of the project. They are interested in bringing the 8-bits style game back to the market.\\
+\subsubsection{The Customers}
+The customer of our product is the general public who play games. \sout{The archetypal customer would be mobile phone users who think retro games are memory of the childhood, and are able to gain pleasure from the product.}{\color{red}The archetypal customer would be gamers who think retro games are memory of the childhood, and are able to gain pleasure from the product.}
+\subsubsection{Other Stakeholders}
+General public -- These people will be our consumer base. \sout{Anyone from the public can access to our product through their mobile phone and play the game by reading its intuitive instructions.}{\color{red}Anyone from the public can access to our product through their computers and play the game by reading its intuitive instructions.} Due to our project is a redevelop project from the Github, it shall share the same general stakeholders as the original one.
+\subsubsection{Priorities Assigned to Users}
+\subsubsection*{Key Users}
+The Client\\
+The Customer\\
+\subsubsection*{Secondary Users}
+The General Public\\
+\subsection{Mandated Constraints}
+\subsubsection{Solution Constraints}
+Description: \sout{The product shall operate on different mobile devices}{\color{red}The product shall operate on different devices with Python 3 and Pyxel library installed.} \\\\
+Rationale: \sout{The client will be preferably using a smart phone with touching screen}{\color{red}The client will be preferably using an device with Python 3 and Pyxel library installed.}\\\\
+Fit criterion: \sout{Our client will be any one with a mobile devices}{\color{red}Our client will be any one with a PC. They need to install Python 3 and Pyxel library to play the game.}\\\\
+Description: The product shall operate without any delay.\\\\
+Rationale: The graphics and images in our product should be small, and the algorithm should have the smallest time complexity(O).\\\\
+Fit criterion: The product shall be approved by running the speed tests.\\\\
+
+%Rationale: The size of the frame is determined during the process of %implementation.\\\\
+%Fit criterion: The maximum and minimum sizes are set by reading the phone's configuration. It shall later be customized by user game setting.\\\\
+\subsubsection{Off\_the\_Shelf Software}
+\sout{An Android Operating System is all the user needs to run our product.}{\color{red} A computer installed with Python 3 and Pyxel library is all the user needs to run our product.}
+\subsubsection{Anticipated Workspace Environment}
+\sout{The anticipated workspace environment for the product is on any mobile devices}{\color{red}The anticipated workspace environment for the product is everywhere, as long as the user can have an device with Python 3 and Pyxel library installed.}
+\subsubsection{Schedule Constraints}
+The schedule constraint is set by the client. A deadline has been set to the week of \sout{November 27, 2018}{\color{red}December 5th, 2018}. 
+\subsubsection{Budget Constraints}
+There is no budget available to us.
+\subsection{Naming Conventions and Terminology}
+Definitions of All Terms, Including Acronyms, Used by Stakeholders Involved in the Project.\\
+\begin{table}[!h]
+\caption{\bf Definitions}
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{ACRONYM/}&\textbf{INTENDED MEANING} \\
+    \textbf{ABBREVIATION}&\\
+    \hline     
+    Client&The group that the product is \\
+    &being developed for\\
+    \hline
+    Customer&Any individual that utilizes the \\
+    &product after completion\\
+    \hline
+    The program&Any individual that utilizes the product\\
+    &after completion\\
+    \hline
+    WTF&Write to File\\
+    \hline
+    eng&engineer\\
+    \hline
+    txt&Text file\\
+    \hline
+    git&a version control system\\
+    \hline
+    apk&Android Application Package \\
+    \hline
+    Google Doc&Google Documentation\\
+    \hline
+    overleaf&An online LaTex editor\\
+    \hline
+    Pyxel&A retro game engine for Python\\
+    \hline
+    Github&An online web-based Git-repository manager \\
+    \hline
+    MIT license&A permissive free software license\\
+    \hline
+\end{tabular}
+\end{table}
+
+\subsection{Relevant Facts and Assumptions}
+\subsubsection{Relevant Facts}
+The relevant facts are that there were \sout{one thousand lines}{\color{red}one thousand and five hundred lines} of code in the original game, and the game has a MIT license on github.
+\subsubsection{Business Rules}
+Everyone one in the team should have the same amount of the work, and the project is owned by the team.
+\subsubsection{Assumptions}
+\sout{Some assumptions for the project are that all the images and audios used in the project are free from the internet, the web-hosting server is free for launch and the written code are encapsulated so that the code would bot be used for personal interests.}{\color{red}Some assumptions for the project are that images used in the project are free from the internet, the written code are encapsulated so that the code would bot be used for personal interests.}
+\section{Functional Requirements}
+
+\subsection{The Scope of the Work and the Product}
+%darin
+\subsubsection{The Context of the Work}
+The work, in the form of a project, is going to be completed in a period of three month by a team of three members and is composed of project code implementation and project documentation. The work of the project is essentially a re-development of an existing project and the core of it is to make it even more advanced by fixing mistakes and adding new features.
+The files of the work is added and saved on \emph{GitLab}. The three members are of the role of \emph{maintainers}.
+\subsubsection{Work Partitioning}
+\qquad
+\begin{table}[!htbp]
+\caption{\bf Work Partitioning}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Event Number}&\textbf{Event Name}&\textbf{Input}&\textbf{Output} \\
+    \hline
+    1&Game Creation&Developer code&An runnable game\\
+    \hline
+    2&Game Audio&Audio file&Sound Effect\\
+    \hline
+    3&Player Plane&Graphics and&Graphic Animation\\
+    &&Developer Code&\\
+    \hline
+    4&Game Collisions&Developer Code&An runnable game\\
+    \hline
+    5&Final Improvements&Developer Code&An runnable game\\
+    \hline
+\end{tabular}
+\end{table}
+\subsubsection{Individual Product Use Cases}
+\begin{itemize}
+    \item \sout{The user plays the game in endless mode.}{\color{red}The user starts the game by pressing "space". Then the game goes from the start page to the game page. User controls the flight by pressing "wasd" or directions keys on keyboard.}
+    \item \sout{The user plays the game in stage mode.}{\color{red}User presses "u" to use ultimate when the ultimate condition is full}
+\end{itemize}
+\textbf{Scenario:}\\
+a) A user downloads the game file and installs Python 3 and Pyxel library on his/her device (usually a computer). \\
+b) \sout{A user runs the file and plays the game.}{\color{red}A user starts the game by pressing "space". Then user controls the flight to collide with the boss}\\
+d) \sout{Game over because of the exhaustion of life point.}{\color{red}A user starts the game by pressing "space". Then user controls the flight to collide with the boss. The game over because of the exhaustion of life points.}\\
+e) \sout{The user exits the game.}{\color{red}A user starts the game by pressing "space". Then user controls the flight to collide with the boss. The game over because of the exhaustion of life points. Then user presses "r" to restart the game.}
+\subsection{Functional Requirements}
+\begin{itemize}
+    \item FR1\\\\
+     \sout{The python file should create a window when the project is still in progress}{\color{red}A window should be created while the game is still in progress}, i.e. the game should be playable on computer.\\\\
+    Fit Criterion or Test Case:\\
+    \sout{Is a kivy window created by executing the python file?}{\color{red}Run the game file on different devices with the same environment for several times}
+    \item FR2\\\\
+    \sout{The python file should be executable with Pyxel library.}{\color{red}The main game file should be executable}\\\\
+    Fit Criterion or Test Case:\\
+    \sout{The file is executable, it does something.} Crash is stricted.
+    \item FR3\\\\
+    \sout{The game should have a welcome stage before the game begins.}{\color{red}The game should have a start stage before the game begins.}\\\\
+    Fit Criterion or Test Case:\\
+    Without giving any input, the game is not started, \sout{and the window stay unchanged.}{\color{red}and the game remains at start page.}
+    \item FR4\\\\
+     \sout{The welcome page should include buttons for mode options.}{\color{red}The start page should come with a retro music, and accept "space" from user to start the game}\\\\
+    Fit Criterion or Test Case:\\
+    \sout{Once the file is executed, a welcome page with buttons shows up.}{\color{red}Try input "space" and other keys when the game is at start page, and check whether the game gives the anticipated response}
+    \item FR5\\\\
+     After the game starts, the plane should shoot automatically.
+    Fit Criterion or Test Case:\\\\
+    a) Is the plane shooting without giving any input?\\
+    b) Is the plane shooting when it is manipulated (or give input)?
+    \item FR6\\\\ 
+    \sout{If the plane has a collision with obstacle objects, i.e. enemy planes, bullets from enemy planes, the game terminates.}{\color{red}If the plane collides with enemy objects such as enemy planes, enemy bullets, player must lose health points.}\\\\
+    Fit Criterion or Test Case:\\
+    \sout{Give a collision test by set the value of ``collision" to True to see whether the game terminates or not.}{\color{red}Control the flight to collide with each of the enemy objects ten times, and record the results}
+    \item FR7\\\\
+     \sout{The player's plane should respond to user's input.}{\color{red}The player's plane should respond to "wasd" or direction keys on keyboard for direction control}\\\\
+    Fit Criterion or Test Case:\\
+    \sout{Set the value of ``direction" and ``speed" to some value within the constraints, check whether the plane acts correctly.}{\color{red}Press those keys and any combination of them each for ten times, and see if whether the flight is moving in the anticipated direction.}
+    \item FR8\\\\
+    \sout{Enemy plane should be eliminated if it is hit by the player's bullet(s).}{\color{red}Enemy flights should all move downwards from the top of the screen in a same pattern.}\\\\
+    Fit Criterion or Test Case:\\
+    \sout{Set the value of ``life" of an enemy plane to False to check whether that plane is eliminated or not.}{\color{red}Play the game in developer mode which is a mode to set health to maximum for developing convenience. Look and record the enemy flights behaviour for 5 minutes.}
+    \item FR9\\\\
+     \sout{In endless mode, the game should not terminate until the player's plane has a collision with an obstacle object.}{\color{red}The game should go to end page with an ending retro music when the player's health point is zero.}\\\\
+    Fit Criterion or Test Case:\\
+    \sout{Set the number of enemy to 0 to check whether the game is running consistently before force it to stop.}{\color{red}Control the flight to collide with enemy bullets. Record the result when the player's health point goes to zero, and then test again for 10 times.}
+    \item FR10\\\\
+     \sout{In stage mode, the game should terminates in two cases:\\
+    a) The player's plane has a collision with an obstacle object.\\
+    b) The stage is cleared.}{\color{red}Boss1(The Yellow Head) should show up and shoot automatically towards the player when the player score increases 5000 every time. Similarly, Boss2(Chramp) should show up every 12000 points.}\\\\
+    Fit Criterion or Test Case:\\
+   \sout{ a) is passed because it is the same as one stated before.\\
+    For b), set the value of stage length to zero to check whether the game terminates as soon as it starts.}{\color{red}Play the game in developer mode which is a mode to set health to maximum for developing convenience. Record the Bosses' behaviour for 10 times and check if whether the behaviours are as anticipated.}
+\end{itemize}
+\section{Non-functional Requirements}
+%sky
+\subsection{Look and Feel Requirements}
+\begin{itemize}
+    \item \sout{NF1}\\
+    \sout{The icons of three types of enemy jets should clearly represent their difficulty levels of beginner, intermediate , advanced by different sizes and patterns.}
+		
+	\item NF{\color{red}1}\\
+	The colour of background scene should not be more saturated than the colour of jets. Also, it should be in contrasting colour from jets’s colour.
+		
+	\item NF{\color{red}2}\\
+	The pattern should not appear too much in the background. Players need to be able to see their jet and incoming enemy jet clearly from the scene.
+		
+	\item NF{\color{red}3}\\
+	Background scenes and jets should be in pixel style.
+		
+	\item \sout{NF5}\\
+	\sout{The background scenes and jets should not be complicated as pixel style is the theme of this product.}(deleted due to duplication with the former one)
+
+\end{itemize}
+\subsection{Usability and Humanity Requirements}
+\subsubsection{Ease of Use Requirements:}
+\begin{itemize}
+	\item NF{\color{red}4}\\
+	The app should be applicable for player {\color{red}using any device with Python 3 and pyxel library installed.}
+    \item NF{\color{red}5}\\
+    The game should be simple for a player aged 12-65 in able condition to understand.
+\end{itemize}
+\subsubsection{Personalization and Internationalization Requirements:}
+\begin{itemize}
+	\item Not applicable
+\end{itemize}
+\subsubsection{Learning Requirement:}
+\begin{itemize}
+    \item NF{\color{red}6}\\
+    The player shall be able to read the game rules written in English {\color{red} provided in the User Guide}
+	\item NF{\color{red}7}\\
+	The game rules should be written in short and clear logic form {\color{red} and it should provide visual aid.}
+\end{itemize}
+\subsubsection{Understandability and Politeness Requirements:}
+\begin{itemize}
+	\item NF{\color{red}8}\\
+	\sout{The player shall be able to read the game rules written in English.}{\color{red}The rule, purpose of the game should be easy for users to understand. The content, especially textual information, should be in a simple style.}
+\end{itemize}
+\subsubsection{Accessibility Requirements:}
+\begin{itemize}
+	\item NF{\color{red}9}\\
+	The game shall be able to be accessed and executed on the majority of \sout{Android smart phone devices} {\color{red} computers with python3 installed}.
+\end{itemize}
+\subsection{Performance Requirements}
+\subsubsection{Speed and Latency Requirements:}
+\begin{itemize}
+    \item NF{\color{red}10}\\
+    The app must response to any input from user within 0.1 second when the game is not started yet.
+	\item NF{\color{red}11}\\
+	When the game has started, the response to a user input should not have latency that can be felt by user.
+	\item \sout{NF12}\\
+	\sout{Generate pop-up message indicating the status of app(ie, loading) if result can not be generated immediately.}
+\end{itemize}
+\subsubsection{Safety-Critical Requirements:}
+\begin{itemize}
+    \item NF{\color{red}12}\\
+    The product should not collect data from user or device.
+\end{itemize}
+\subsubsection{Precision or Accuracy Requirements:}
+\begin{itemize}
+    \item NF{\color{red}13}\\
+    Game score and other numerical information that will be shown to player are \sout{all integer values} {\color{red} in the appropriate format}.
+\end{itemize}
+\subsubsection{Reliability and Availability:}
+\begin{itemize}
+    \item NF{\color{red}14}\\
+    The game should be fully functioning without internet connection after the necessary content is installed successfully.
+\end{itemize}
+\subsubsection{Robustness or Fault-Tolerance Requirements:}
+\begin{itemize}
+    \item NF{\color{red}15}\\
+    The game requires very limited modification from player and should be operate without consideration of the physical state of end users.
+\end{itemize}
+\subsubsection{Capacity Requirements:}	
+\begin{itemize}
+    \item NF{\color{red}16}\\
+    The game should not overuse device storage space when running.
+    \item NF{\color{red}17}\\
+    The size of stored data and running log should be limited.
+\end{itemize}
+\subsubsection{Scalability or Extensibility Requirements:}
+\begin{itemize}
+    \item NF{\color{red}18}\\
+    The code will allow for scalability.
+\end{itemize}
+\subsubsection{Longevity Requirements:}
+\begin{itemize}
+    \item NF{\color{red}19}\\
+    The product shall be able to be executed for the lifetime of a regular program. 
+\end{itemize}
+\subsection{Operational and Environmental Requirements}
+\subsubsection{Expected Physical Environment:}
+\begin{itemize}
+    \item NF{\color{red}20}\\
+    The product is intended to be used on device {\color{red} with Python 3 and pyxel library installed}.
+\end{itemize}
+\subsection{Maintainability and Support Requirements}
+\begin{itemize}
+    \item NF{\color{red}21}\\
+    Maintenance is conducted upon user's feedback and update on {\color{red}Python and pyxel library version}.
+\end{itemize}
+\subsection{Security Requirements}
+\begin{itemize}
+    \item Nf{\color{red}22}\\
+    The product should not access user's personal data.
+	\item NF{\color{red}23}\\
+	The only data generated will be \sout{game record and log}{\color{red}the file storing the high score}.
+\end{itemize}
+\subsection{Cultural Requirements}
+\begin{itemize}
+    \item NF{\color{red}24}\\
+    The product shall show a disclaimer explaining that any similarities to any cultural or political symbol or figure is coincidental.
+\end{itemize}
+\subsection{Legal Requirements}
+\begin{itemize}
+    \item NF{\color{red}25}\\
+    The product shall comply with all national and federal laws.
+	\item NF{\color{red}26}\\
+	The product shall comply with all relevant software standards.
+ 	\item NF{\color{red}27}\\
+ 	The product shall comply with all relevant privacy acts.
+\end{itemize}
+\subsection{Health and Safety Requirements}
+\begin{itemize}
+    \item Not applicable.
+\end{itemize}
+{\color{red}This section is not in the original Volere template, but health and safety are issues that should be considered for every engineering project.}
+
+\section{Project Issues}
+
+\subsection{Open Issues}
+N/A
+\subsection{Off-the-Shelf Solutions}
+\subsubsection{Reusable Components}
+Modularized code components
+\subsubsection{Products that can be copied}
+As an open source project with MIT license, it is allowed to be copied and redeveloped.
+\subsection{New Problems}
+\subsubsection{Effects on the Current Environment}
+\sout{The updates of Android system may cause the failure of the game.\\
+The product mat not be compatible on all Android-based operation systems.} {\color{red} The updates of Python version and Pyxel library may cause the failure of the game.}
+\subsection{Tasks}
+\subsubsection{Project Planning}
+This is a \href{https://gitlab.cas.mcmaster.ca/3XA3_Cloud10/se3xa3/tree/master/shoot_game/ProjectSchedule/}{link} to our GanttProject file.
+\subsection{Migration to the New Product}
+\subsubsection{Requirements for Migration to the New Product}
+None.
+\subsubsection{Data That Has to Be Modified or Translated for the New System}
+None
+\subsection{Risks}
+N/A
+\subsection{Costs}
+potential cost: image editing software
+\subsection{User Documentation and Training}
+Not applicable
+\subsection{Waiting Room}
+\begin{itemize}
+    \item further functions and features
+	\item Audio effects
+\end{itemize}
+\subsection{Ideas for Solutions}
+\begin{itemize}
+    \item Proper hierarchy
+	\item Documentation of python code
+\end{itemize}
+
+\newpage
+
+\section{Appendix}
+
+This section has been added to the Volere template.  This is where you can place
+additional information.
+
+\subsection{Symbolic Parameters}
+
+The definition of the requirements will likely call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+\newpage
+\bibliography{bib}
+\bibliographystyle{plain}
+\end{document}
+

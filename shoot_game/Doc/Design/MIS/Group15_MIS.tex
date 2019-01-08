@@ -1,0 +1,565 @@
+\documentclass[12,english]{article}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{textcomp}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{ulem}
+
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\title{Module Internal Specfication for Group 15 - FlightShootingGame}
+\author{Yijun Chen\\
+\texttt{ (cheny161)}
+\and
+Tianxing Li\\
+\texttt{(Lit20)}
+\and
+Zefeng Wang\\
+\texttt{(wangz217)}
+}
+
+\date{}
+
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Module Hierarchy}
+\begin{table}[!htbp]
+        \begin{tabular}{ll}
+        \toprule
+        Level 1 & Level 2 \\
+        \midrule
+        \sout{Hardware Hiding Module} & \\
+         \midrule
+        Behaviour Hiding Module & Boss Module \\%1
+        & Bullet Module\\%2
+        & Smart\_Bullet Module\\%3
+        & Enemy Module, Player Module\\%4, 5
+        & Gift Module\\%6
+		& Music Module \\%7
+		 \midrule
+        Software Decision Module & \\
+        \bottomrule
+        \end{tabular}
+        \caption{Module Hierarchy}
+        % Colour for the rulings in tables:
+        \makeatletter
+           \def\rulecolor#1#{\CT@arc{#1}}
+           \def\CT@arc#1#2{%
+           \ifdim\baselineskip=\z@\noalign\fi
+           {\gdef\CT@arc@{\color#1{#2}}}}
+           \let\CT@arc@\relax
+          \rulecolor{black!50}
+        \makeatother
+        \label{Table 1}
+        \end{table}
+
+\section{MIS of Boss Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			
+			\hline
+			%	\label
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			Constructor & Integer, Integer, Integer & Boss Object & -\\ \hline
+			draw & - & GUI & -\\ \hline
+			move & - & - & -\\ \hline
+			show\_up & - & - & -{\color{red} ObjectIsShowingUp}\\ \hline
+			check\_death & integer, integer &
+			integer & -\\ \hline
+			reset & integer & - & -\\ \hline
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		state: int - the state of the object that determine the behaviour of the object.\\
+		life: int - the life point of the object.\\
+		x: int - the x value of the position of the object.\\
+		y: int - the y value of the position of the object.\\
+		direction: int - the direction of the object's movement.\\
+		
+		\subsubsection{Environmental Variables}
+		Not Applicable
+		
+		\subsubsection{Assumptions}
+		$0\leq x\leq 115$\\
+		$0\leq y\leq 185$\\
+		$state \in \{0, 1\}$
+		
+		\subsubsection{Access Program Semantics}
+		draw():
+		
+		Input: none
+		
+		Output: graphics on screen.
+		
+		Exceptions: none.\\
+		\\
+		move():
+		
+		Input: none
+		
+		Transition: get the data from the object and move its position.
+		
+		Exceptions: none.\\
+		\\
+		show\_up():
+		
+		Input: none
+		
+		Transition: change the state of the object to 1 if it is initially 0.
+		
+		Output: the transition of the object's state.
+		
+		Exceptions: \sout{none} {\color{red} ObjectIsShowingUp}\\
+		\\
+		check\_death(life, point):
+		
+		Input: life point, score point
+		
+		Transition: if the life point of the object is 0, then reset it to `life' and then return score `point'.
+		
+		Output: Transition of object's position.
+		
+		Exceptions: none.\\
+		\\
+		reset(life):
+		
+		Input: life, the life point that is to be set. 
+		
+		Transition: None
+		
+		Output: The None.
+		
+		Exceptions: none.
+\section{MIS of Bullet Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			
+			\hline
+			%	\label
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			Constructor & integer, integer, integer, integer, integer, integer, integer & bullet object & -\\ \hline
+			move & - & - & -\\ \hline
+			draw & - & GUI & -\\ \hline
+			reset & integer, integer & - & -\\ \hline
+
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+	    x: int - x value of the object.\\
+		y: int - y value of the object.\\
+		\subsubsection{Environmental Variables}
+		
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them
+		
+		\subsubsection{Access Program Semantics}
+		
+		move():
+		
+		Input: none
+		
+		Transition: change the position of the bullet.
+		
+		Exception: none\\ 
+		\\
+		draw():
+		
+		Input: none
+		
+		Output: graph on the screen.
+		
+		Exception: none\\ 
+		\\
+		reset(x, y):
+		
+		Transition: change the position of the object to x and y.
+		
+		Exception: none\\ 
+		\\
+	
+	
+	
+\section{MIS of Smart\_Bullet Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{table}[!htbp]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Name & In & Out & Exceptions \\ \hline
+			constructor & integer, integer, integer, integer, integer, integer & smart\_bullet object & - \\ \hline
+			move & - & - & - \\ \hline
+			draw & - & GUI & - \\ \hline
+			aim & player & - & Invalid Input \\ \hline
+			reset & integer, integer &  - & - \\ \hline
+		\end{tabular}
+	\end{table}
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		x: int - the x value of the object position.\\
+		y: int - the y value of the object position.\\
+		speed\_x: int - the x component of its speed.\\
+		speed\_y: int - the y component of its speed.\\
+		
+		\subsubsection{Environmental Variables}
+		Not applicable.
+		\subsubsection{Assumptions}
+			All variables are set when the object is constructed. 
+
+		\subsubsection{Access Program Semantics}
+
+        move():
+
+		Input: no inputs
+		
+		Transition: change the position of the object.
+		
+		Exception - None\\
+		\\
+		draw():
+		
+		Input: none
+			
+		Output: graph on the screen.
+			 
+		Exception: none\\
+		\\
+		aim(player):
+			
+		Input: player - the player object.
+			 
+		Transition - updates the direction of the speed by change the value of x\_speed and y\_speed.
+			  			 
+		Exception - None\\
+		\\
+		reset(x, y):
+		
+		Transition: change the position of the object to x and y.
+		
+		Exception: none\\ 
+		\\
+
+
+\section{MIS of Player Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	draw & - & GUI & -\\ 
+	\hline
+	reset & integer & - & -\\
+	\hline
+	death & - & - & -\\
+	\hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		x: int - the x value of the object position.\\
+		y: int - the y value of the object position.\\
+		speed\_x: int - the x component of its speed.\\
+		speed\_y: int - the y component of its speed.\\
+		\subsubsection{Environmental Variables}
+		Not Applicable
+		\subsubsection{Assumptions}
+All variables are set when the object is constructed.
+
+		\subsubsection{Access Program Semantics}
+	    draw():
+		
+		Input: none
+			
+		Output: graph on the screen.
+			 
+		Exception: none\\
+		\\
+		reset(life):
+		
+		Input: a integer, life
+		
+		Transition: change the life value of object to the input value and change the rest to their initial value.
+	            	
+	   Output: none
+	
+		Exception: none\\ 
+		\\
+		death():
+		
+		Input: none
+		
+		Transition: change the life value of the object to 0.
+	
+	    Output: none
+	
+		Exception: none\\ 
+		\\
+
+
+\section{MIS of Enemy Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{table}[!htbp]
+				\begin{tabular}{|c|c|c|c|}
+					\hline
+					Name & In & Out & Exceptions \\ \hline
+					move & - & - & - \\ \hline
+					reset & - & - & - \\ \hline
+					check\_death & - & integer & -\\ \hline
+					not\_collidable & - & - & -\\ \hline
+				\end{tabular}
+			\end{table}
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		x: int - the x value of the object position.\\
+		y: int - the y value of the object position.\\
+		speed: int - the y component of object speed.\\
+		\subsubsection{Environmental Variables}
+		
+		Not Applicable 
+		
+		\subsubsection{Assumptions}
+		
+		All variables are set when the object is constructed.
+
+		\subsubsection{Access Program Semantics}
+		
+		move():
+		
+		Input: none
+		
+	  Transition: updates object position
+	  
+	  Output: none
+	  
+	  Exception - none \\
+	  \\
+	  draw():
+		
+		Input: none
+			
+		Output: graph on the screen.
+			 
+		Exception: none\\
+		\\
+		reset():
+		
+		Input: none
+		
+		Transition: set the values of the object to its initial values. 
+			
+		Output: none
+			 
+		Exception: none\\
+		\\
+		check\_death():
+		
+		Input: none
+	
+		Output: 0 if the life value is less than 0;
+		
+		        100 if the life value is not less than 0.
+			 
+		Exception: none\\
+		\\
+		not\_collidable():
+		
+		Input: none
+		
+		Transition: change the x and y values both to -1000.
+	   
+	    Output: none
+
+	
+\section{MIS of Gift Module}
+		\subsection{Interface Syntax}
+			\subsubsection{Exported Access Programs}
+				\begin{tabular}[pos]{|c|c|c|c|}
+					
+					\hline
+					%	\label
+					\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+					Pmove & integer & - & Invalid Input\\ \hline
+					draw & - & GUI & -\\ \hline
+					reset & - & - & -\\ \hline
+					
+				\end{tabular}
+				
+		\subsection{Interface Semantics}
+			\subsubsection{State Variables}
+			X: int - x value of left corner of the gift\\
+			Y: int - y value of left corner of the gift\\
+			type: int - type of the gift\\
+			width: int - width of the gift\\
+			height: int - height of the gift\\
+			life: int - life of the player
+			
+			\subsubsection{Environmental Variables}
+			Not Applicable
+			
+			\subsubsection{Assumptions}
+			Variables should be set before trying to access them
+			
+			\subsubsection{Access Program Semantics}
+			move(score):
+			
+			Input: Integer of player score value
+			
+			Transition: Whenever player score increases 1500, a gift would drop from top and move only in y direction.
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			draw():
+			Input: none
+			
+			Transition: graph on the screen
+			
+			Output: none
+			Exception: none\\
+			\\
+			reset():
+			
+			Input: none
+			
+			Transition: Change the position of the object to x and y, and change life to 1.
+			
+			Output: none
+			
+			Exception: none
+
+			
+\section{MIS of Music Module}
+		\subsection{Interface Syntax}
+			\subsubsection{Exported Access Programs}
+				\begin{tabular}[pos]{|c|c|c|c|}
+					
+					\hline
+					%	\label
+					\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+					landpage\_music & - & - & -\\ \hline
+					game\_music & - & - & -\\ \hline
+					end\_music & - & - & -\\ \hline
+					{\color{red}gift\_music} & {\color{red}-} & {\color{red}-} & {\color{red}-}\\ \hline
+					shoot\_music & - & - & -\\ \hline
+					damage\_music & - & - & -\\ \hline
+					stop\_music & - & - & -\\ \hline
+					
+				\end{tabular}
+				
+		\subsection{Interface Semantics}
+			\subsubsection{State Variables}
+			N/A
+			
+			\subsubsection{Environmental Variables}
+			Not Applicable
+			
+			\subsubsection{Assumptions}
+			{\color{red}Melodies should be initialized before trying to access them}
+			
+			\subsubsection{Access Program Semantics}
+			landpage\_music()
+			
+			Input: none
+			
+			Transition: Play melody 0 and 1 on track 0, play melody 2 and 3 on track 1, and play melody 4 on track 2.
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			game\_music():
+			Input: none
+			
+			Transition: Play melody 2 and 3 on track 1.
+			
+			Output: none
+			Exception: none\\
+			\\
+			end\_music():
+			
+			Input: none
+			
+			Transition: Play melody 4 on track 2.
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			{\color{red}gift\_music():
+			
+			Input: none
+			
+			Transition: Play melody 6 on track 2.
+			
+			Output: none
+			
+			Exception: none}\\
+			\\
+			shoot\_music():
+			
+			Input: none
+			
+			Transition: Play melody 5 on track 0.
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			damage\_music():
+			
+			Input: none
+			
+			Transition: Play melody 7 on track 1.
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			stop\_music():
+			
+			Input: none
+			
+			Transition: Stop melodies on all tracks from 0 to 2.
+			
+			Output: none
+			
+			Exception: none
+			
+\section{Major Revision History}
+November 7, 2018 - Rough draft of sections\\
+November 8, 2018 - Revised sections \\
+November 9, 2018 - Revision 0 complete\\
+December 5, 2018 - Revision 1 complete\\
+
+
+			
+\end{document}

@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{cite}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{color}
+\usepackage{ulem}
+
+\title{SE 3XA3 Development Plan\\Project: Flight Shooting Game}
+
+\author{Team 15, \,\,Cloud-10
+		\\ Yijun Chen \,\,\,\,\,\,\,\,\,cheny161
+		\\ Tianxing Li \,\,\,\,\,\,\,\,\,lit20
+		\\ Zefeng Wang\,\,\,\,\,\,\,\,\,\,wangz217
+}
+
+\date{}
+
+
+\begin{document}
+
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+Sept 27 & all & Finalize first edition \\
+Dec 5 & all & Finalize revision 1\\
+... & ... & ...\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\maketitle
+\newpage
+
+This document indicates the Development Plan for the implementation of ’Pixel Shooting Game’. The intent of this document is to facilitate design and track the project through the clear roles allocation and workflow plan in the program.
+
+\section{Team Meeting Plan}
+\begin{table}[h!] 
+  \begin{center}
+    \label{tab:table1}
+    \begin{tabular}{|l|p{15mm}|p{30mm}|p{30mm}|} 
+    	\hline
+      \textbf{} & \textbf{location} & \textbf{roles} & \textbf{agenda}\\
+      \hline
+      Sept 27 & wv suites floor4 & Chair , Scribe: YC \newline Developer: TL,ZW & Complete the development plan\\\hline
+          Oct 2 & wv suites floor4 & Chair , Scribe: TL\newline Developer: YC,ZW& Sketch the RD0\\\hline
+      Oct 4 & wv suites floor4 & Chair , Scribe: ZW\newline Developer: YC,TL& Complete the RD0\\\hline
+      Oct 11 & wv suites floor4 & Chair , Scribe: YC\newline Developer: TL,ZW& Finalize the Proof of Concept Demonstration\\\hline
+      Oct 18 & wv suites floor4 & Chair , Scribe: TL\newline Developer: YC,ZW& Discuss module hierarchy and MIS of the project.\\\hline
+      Oct 25 & wv suites floor4 & Chair , Scribe: ZW\newline Developer: YC,ZW& Discuss the test plan and sketch the TPR0\\\hline
+      Nov 1 & wv suites floor4 & Chair , Scribe: YC\newline Developer: TL,ZW& Do unit tests and debug the problems\\\hline
+      Nov 8 & wv suites floor4 & Chair , Scribe: TL\newline Developer: YC,ZW& Test the code and rehearse for the demonstration\\hline
+      Nov 15 & wv suites floor4 & Chair , Scribe: ZW\newline Developer: TL,YC& Complete the RD0\\\hline
+      Nov 22 & wv suites floor4 & Chair , Scribe: YC\newline Developer: TL,ZW& Third time test the code and do peer evaluation\\\hline
+      Dec 2 & wv suites floor4 & Chair , Scribe: TL\newline Developer: YC,ZW& Finalize the code and rehearse for the final demo\\\hline
+      
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Team Communication Plan}
+\begin{table}[H]
+  \begin{center}
+    \label{tab:table2}
+    \begin{tabular}{|l|c|c|} 
+    	\hline
+      \textbf{Name} & \textbf{email} & \textbf{phone} \\
+      \hline
+      YC & cheny161@mcmaster.ca & 365-8882736 \\\hline
+      ZW & wangz217@mcmaster.ca & 365-8883977 \\\hline
+      TL & lit20@mcmaster.ca & 365-8884098  \\\hline
+    \end{tabular}\\
+  \end{center}
+\end{table}
+    The Google Drive we used is at \href{https://drive.google.com/drive/folders/1OPHTCanKQ8rV73WSYIb66rQAOSSac0Gg?usp=sharing}{this link.} \\\\And the Git refers to our repository is \href{https://gitlab.cas.mcmaster.ca/3XA3_Cloud10/se3xa3.git}{this link.}
+
+
+\section{Team Member Roles}
+\begin{table}[H]
+  \begin{center}
+    \label{tab:table2}
+    \begin{tabular}{|l|c|} 
+    	\hline
+      \textbf{Name} & \textbf{Main Roles} \\
+      \hline
+      YC & scribe and developer \\\hline
+      ZW & LaTex expert and developer \\\hline
+      TL & Git expert and developer  \\\hline
+    \end{tabular}\\
+  \end{center}
+\end{table}
+*Team leader is responsible for organizing each meeting. And everyone take turns to be the leader.
+
+
+\section{Git Workflow Plan}
+The git workflow in our project involves three branches: the main branch, develop branch, and feature branch. All the developed versions will be in the main branch, and while they are in the developing process, the modifications will take place in the develop branch. During the developing process, team members will be assigned to different work. The individual developing work will take place in a certain feature branch. Once all the work in feature branches are finished, they will be merged into develop branch and finally to the main branch.
+
+\section{Proof of Concept Demonstration Plan}
+The project program can be run on both Windows and Mac OS operating system with python 3.7(including Pyxel library) \sout{and Android 8.0 emulator} installed. Both the software and hardware requirements are easy to achieve. \sout{The potential problem is that there are slight differences between Android versions so that compatibilities may result. }The degree of customization is limited within user experience level.  The users will not be able to modify the program.\sout{, but they do can change the content such as game modes.}
+\section{Technology}
+We have chosen python 3.7 as the programing language for our project running on IDLE along with Pyxel library installed. The program will be tested with PyUnit testing framework and will be documented by pydoc.
+\section{Coding Style}
+The coding style we are going to apply is \href{https://github.com/google/styleguide/blob/gh-pages/pyguide.md}{\emph{Google Python Style Guide}} \cite{w1}. Google is now one of the most successful IT companies in the world and we believe it would professionalize our programming skills by applying this coding style.\\
+
+\section{Project Schedule}
+
+\href{https://gitlab.cas.mcmaster.ca/3XA3_Cloud10/se3xa3/tree/master/shoot_game/ProjectSchedule}{This is a quick link to our GanttProject files.}
+
+\section{Project Review}
+\sout{Nothing to be filled in here until \textbf{first revision}.}\\
+{\color{red} Formal review: accomplished directly by user and provide feedback to developer.}\\
+{\color{red} Walkthrough: focuses on consensus and, through it, removes problems.}\\
+{\color{red} Inspection: more rigorous than walthrough, higher percentage defects should be detected.}
+
+
+\bibliographystyle{ieeetr}
+\bibliography{web1.bib}
+
+\end{document}

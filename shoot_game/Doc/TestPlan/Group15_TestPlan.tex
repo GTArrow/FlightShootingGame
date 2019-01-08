@@ -1,0 +1,394 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{ulem}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Plan\\Flight Shooting Game}
+
+\author{Team 15, Cloud 10
+		\\ Yijun Chen and cheny161
+		\\ Zefeng Wang and wangz217
+		\\ Tianxing Li and lit20
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+2018-10-26 & 0.0 & Version0 done\\
+2018-12-05 & 1.0 & Version1 done\\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+
+\section{General Information}
+
+\subsection{Purpose}
+\sout{The function of our program project is to run a 2D retro flight-shooting game.} {\color{red}The purpose of our project is to implement a 2D retro flight-shooting game.}This game will be able to interpret user inputs, display the pixel-style user interface and play sounds. \sout{The testing for the software will include the PyUnit as our automated unit testing. For structural testing, our group will implement PyUnit to test collision detection, user input recognition, and path coverage.}{\color{red}The testing for the software will include the Unittest as our automated testing. For structural testing, our group will implement Unittest to test collision detection, user input recognition, and path coverage.} Functional testing will consist of the minimum set of test cases which cover all programming statements.  \sout{Framing resizing, sound output and graphics displaying will be tested.} Mutation testing will also be used to design new test cases and evaluate the quality of the existing software tests.
+\\
+\subsection{Scope}
+Testing will provide independent information about the quality of \sout{our} {\color{red} the} game, risk of \sout{failure to the users} {\color{red} software failure such as crashing, getting stuck}, and will \sout{allow our group} {\color{red}assist us in making} \sout{make} sure \sout{that the full requirements of our game are being met.} {\color{red} the completion of meeting the requirements.} It performs root cause analysis which also helps in maintaining efficiency. Before releasing the software, all of our tests must be thoroughly completed and passed.
+\newpage
+
+
+\subsection{Acronyms, Abbreviations, and Symbols}
+	
+\begin{table}[!h]
+\caption{\bf Definitions}
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{ACRONYM/}&\textbf{INTENDED MEANING} \\
+    \textbf{ABBREVIATION}&\\
+    \hline     
+    PyUnit& It is an easy way to create unit testing programs\\
+    & and UnitTests with Python \\
+    \hline
+    The program&Any individual that utilizes the product\\
+    &after completion\\
+    \hline
+    PoC&Proof of Concept\\
+    \hline
+    SRS&Software Requirements Specification\\
+    \hline
+    GUI&Graphical User Interface\\
+    \hline
+    \sout{apk}&\sout{Android Application Package }\\
+    \hline
+    Pyxel&A retro game engine for Python\\
+    \hline
+    \sout{Kivy}&\sout{An Android app engine for Python}\\
+    \hline
+    {\color{red}Pyxel} & {\color{red}The most important library that the game is relied on.}\\
+    \hline
+    MIT license&A permissive free software license\\
+    \hline
+    Structure Testing&Testing derived from the\\
+    & internal structure of the software.\\
+    \hline
+        Functional Testing&Testing derived from \\
+        &a description of how the program functions.\\
+    \hline
+        Dynamic Testing&Testing which includes \\
+        &having test cases run during execution.\\
+    \hline
+        Static Testing&Testing that does not\\
+        & involve program execution.\\
+    \hline
+        Manual Testing&Testing conducted by people.\\
+    \hline
+        Automated Testing&Testing that\\
+        & is run automatically by software.\\
+
+    \hline
+\end{tabular}
+\end{table}
+
+\subsection{Overview of Document}
+{\color{red}The most frequent testing method is manual test because the main output of the software is the graphic and audio information.} Unittest implemented through PyUnit is used \sout{as the main testing method in our software to test that each unit of our software is performed as designed}. Structure testing, functioning testing, and mutation testing act as means to arrange testing activities. Since this is an open source redeveloped project, our game is similar to the original Flight Shooting Game. Studying their testing systems will drastically reduce the time needed to build our test cases. This document will present what is {\color{red} going} to be tested of the software.
+
+\section{Plan}
+	
+	\subsection{Software Description}
+	The software is a retro style shooting game \sout{operated on} {\color{red} implemented by} Python. The user can play the game through the basic keyboard operation.
+	\subsection{Test Team}
+	The individuals responsible for testing are Yijun Chen, Tianxing Li, Zefeng Wang. 
+	\subsection{Tools Used for Testing}
+		The tool that will be utilized for this project is PyUnit. It will be used to automate the unit testing. 
+	\subsection{Testing Schedule}
+		
+	\begin{table}[!htbp]
+
+	\begin{tabular}[pos]{|l|c|r|}
+		
+		\hline
+	%	\label
+		\textbf{Task}& \textbf{Team Member} & \textbf{Date} \\ \hline
+		Player status& YC & October 28th 2018\\ \hline
+		Bullets & TL & November 2nd 2018\\ \hline
+		Collision & ZW & November 4th 2018
+	\\ \hline
+		Gift status & YC & November 5th 2018 \\ \hline
+		Sound & TL & November 7st 2018 \\ \hline
+		Graphics & ZW & November 9th 2018 \\ \hline
+		Usability & YC & November 11th 2018 \\ \hline
+		Performance & TL & November 15th 2018 \\ \hline 
+		
+	\end{tabular}
+		\caption{Testing Assignemts}
+		\label{Table 4}	
+	
+\end{table}	
+
+\section{System Test Description}
+	
+\subsection{Tests for Functional Requirements}
+
+\subsubsection{UserInput}
+		
+\paragraph{Player Control}
+
+\begin{itemize}
+
+\item{FS-PC-1\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: \sout{A graph of} {\color{red}Game is running and} player plane stays still at the bottom of the window.\\
+Input: ``W" or ``UP" button. (Press once)\\
+Output: The player plane moves up for certain distance {\color{red}in range of 1/5 of the window vertically.}\\
+How test will be performed: Press ``W" or ``UP" button once, player plane moves upwards for a short distance {\color{red}described before.} If it moves in other direction or stays still, then there is an error.
+					
+\item{\sout{FS-PC-2}}
+
+\sout{Type: Functional, Dynamic, Manual}\\
+\sout{Initial State: A graph of player plane stays still at the top of the window.}\\
+\sout{Input: ``S" or ``DOWN" button. (Press once)}\\
+\sout{Output: The player plane moves down for certain distance in range of 1/5 of the window vertically.}\\
+\sout{How test will be performed: Press ``S" or ``DOWN" button once, player plane moves upwards for a short distance described before. If it moves, then there is an error. If it moves in other direction or stays still, then there is an error.}
+
+\item{FS-PC-{\color{red}2}\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: A graph of player plane stays still at the bottom of the window.\\
+Input: ``W" or ``UP" button. (Hold)\\
+Output: The player plane keeps moving up until it reach the top of the screen.\\
+How test will be performed: Hold ``W" or ``UP" button, player plane keeps moving up until it reaches the top of the window. If it moves in other direction or stays still or it does not stop when hit the top, then there is an error.
+
+\item{FS-PC-{\color{red}3..4}}
+
+Do the similar test for ``DOWN" direction with key ``S" or ``DOWN".
+
+\item{FS-PC-{\color{red}5..6}}
+
+Do the similar test for ``LEFT" direction with key ``A" or ``LEFT".
+
+\item{FS-PC-{\color{red}7..8}\\}
+
+Do the similar test for ``RIGHT" direction with key ``D" or ``RIGHT".
+
+\item{FS-PC-{\color{red}9..10\\}}
+
+Do the similar test for ``UPLEFT" direction with (key ``W" and ``A") or (``UP" and ``LEFT").
+
+\item{FS-PC-{\color{red}11..12\\}}
+
+Do the similar test for ``UPRIGHT" direction with (key ``W" and ``D") or (``UP" and ``RIGHT").
+
+\item{FS-PC-{\color{red}13..14\\}}
+
+Do the similar test for ``DOWNLEFT" direction with (key ``S" and ``A") or (``DOWN" and ``LEFT").
+
+\item{FS-PC-{\color{red}15..16\\}}
+
+Do the similar test for ``DOWNLEFT" direction with (key ``S" and ``D") or (``DOWN" and ``RIGHT").
+
+\item{FS-PC-{\color{red}17}\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: Game running and play is alive with full ``energy" and certain enemy planes on the field.\\
+Input: ``U button. (Press once)\\
+Output: All the enemy planes should be destroyed instantly.\\
+How test will be performed: When ``energy" is full, player press ``U" once and all enemy planes {\color{red} not including the boss} alive are destroyed instantly. If any stay alive, there is an error.\\
+\end{itemize}
+
+\paragraph{Main Control}
+\begin{enumerate}
+\item {FS-MC-1\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: The game is on the start page.\\
+Input: ``SPACE" key. (Press once)\\
+Output: The game enters the game page and the game starts.\\
+How test will be performed: When it is on the start page, press ``SPACE" once, the game starts immediately. {\color{red} If there is any other behaviours, there is an error.}
+\item {FS-MC-2\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: The game is on the death page.\\
+Input: ``Q" key. (Press once)\\
+Output: The game quits immediately.\\
+How test will be performed: When the game is on death page, press ``Q" once to quit the game. The windows should \sout{vanish} {\color{red}be closed}.
+\item {FS-MC-3\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: The game is on the death page.\\
+Input: ``R" key. (Press once)\\
+Output: The game restarts immediately.\\
+How test will be performed: When the game is on death page, press ``R" once to restart the game. A new game should start.
+\end{enumerate}
+\subsubsection{Other functional requirement tests}
+\begin{enumerate}
+\item {FS-R-1\\}
+Type: Functional, Dynamic, Manual\\
+Initial State: The game on the start page.\\
+Input: Play one round.\\
+Output: Modification on high mark.\\
+How test will be performed: After one round, if the new score is higher than the original \sout{mark} {\color{red} score}, the high \sout{mark} {\color{red} score} is set to the new \sout{mark} {\color{red} score}, else it remains the same. If the game does not behave in this way, there is an error.
+\item {FS-R-2\\}
+Type: Functional, Dynamic, Manual\\
+Initial State: The game is running and player is alive.\\
+Input: None.\\
+Output: The player plane is shooting bullets automatically.\\
+How test will be performed: Start a game and the player is shooting bullets automatically. 
+
+
+\item {FS-R-3\\}
+Type: Functional, Dynamic, Manual\\
+Initial State: The game is running and player is alive.\\
+Input: Some operations to make the player's plane collide other enemy objects.\\
+Output: Loss of life point.\\
+How test will be performed: Let the player's plane collide with other enemy objects to see if the life point decreases.
+\item {FS-R-4\\}
+Type: Functional, Dynamic, Manual\\
+Initial State: The game is running and player plane is alive.\\
+Input: Some operations making the player plane collide with gift object.\\
+Output: The player plane gains some benefit.\\
+How test will be performed: If player's plane collides with a ``+" sign gift, the life point of the player plane increases. If player's plane collides with a ``R" sign gift, the fire mode of the player's bullet becomes double instead of single.
+\end{enumerate}
+
+
+\subsection{Tests for Nonfunctional Requirements}
+\paragraph{Look and feel\\}
+{\color{red}NF-L-1}\\
+Type: Structural, Static, Manual\\
+Initial State: main page\\
+Input/Condition: press space to start\\
+Output/Result: three kinds of enemy: enemy jet, head, boss\\
+How test will be performed: enemy jet{\color{red}(with two different graphs)}, head, boss have all be seen by the player.\sout{ and then the player will be asked whether they can till the relationship between the difficulty level and three types of enemy.}
+\paragraph{Usability\\}
+{\color{red}NF-U-1}\\
+Type: Structural, Static, Manual\\
+Initial State: main page \\
+Input/Condition: controls and operations are not introduced to the player\\
+Output/Result: player's feedback\\
+How test will be performed: the controls and operations will not be introduced to the players and after they have been playing for a while, ask them for confusion or difficulties they have encountered.
+\paragraph{Performance\\}
+{\color{red}NF-P-1}\\
+Type: Structural, Static, Manual\\
+Initial State: main page \\
+Input/Condition: controls and operations are introduced to the player\\
+Output/Result: player's feedback\\
+How test will be performed: the controls and operations will be introduced to the players and after they have been playing for a while, ask them whether they have felt any latency or slow response speed.
+\paragraph{Operational and Environmental\\}
+{\color{red}NF-O-1}\\
+Type: Structural, Static, Manual\\
+Initial State: main page \\
+Input/Condition: controls and operations are introduced to the player\\
+Output/Result: player's feedback\\
+How test will be performed: the controls and operations will be introduced to the players and after they have been playing for a while, ask them \sout{whether they have encountered any thing that would violate their culture or religious.}{\color{red} what is the level of difficulty of the operations and what kind of the overall experience do they have.}
+
+
+\section{Tests for Proof of Concept}
+As for shooting game program, the proof of concept should be focusing on testing the key question: whether the game is fun. This would request an approximation of \sout{80} {\color{red} 50}\% code, \sout{5} {\color{red} 20}\% of art work, image, {\color{red} 20\% of sound effect} to be precise have been done.
+
+
+\subsection{Willingness to Play}
+
+\begin{enumerate}
+
+\item{FC-1\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial State: main page\\
+Input/Condition: controls and operations are introduced to the player\\
+Output/Result: player's feedback\\
+How test will be performed: the controls and operations will be introduced to the player and after they have been playing for a while, ask them what they like and dislike about the game.
+					
+
+\end{enumerate}
+
+	
+\section{Comparison to Existing Implementation}	
+There are two tests that compare the program to the Existing Implementation of the program. Please refer to:
+\begin{itemize}
+	\item test SS-2 in Tests for Nonfunctional Requirements - Usability
+	\item test SS-3 in Tests for Nonfunctional Requirements - Performance
+\end{itemize}
+
+				
+\section{Unit Testing Plan}
+The Python Unittest framework will be used to do unit testing for this project.
+		
+\subsection{Unit testing of internal functions}
+In order to create unit tests for internal functions of the program, the functions which can return value(s) in each class will be tested independently while functions that do not return, but just mutate values will also be tested with the help of some other return functions to monitor the mutated values. The classes will be initialized independently with input values for their constructors. Some functions may need extra arguments which will also be included in input values. A series of unit tests can be conducted with expected output and actual output values of functions are given. This project will not need any stubs or drivers to be imported in terms of testing. Coverage metrics will be involved to determine how much of code in program has been covered by the unit test. The test should cover as many cases as possible. However, there are very similar or same functions, such as move(), in different classes and to avoid redundancy, some of them will not be tested. And in this way, our goal coverage will be around 75\%.
+
+{\color{red}\subsection{Unit testing list}}
+{\color{red}Unit testings are made for each of the following functions.}
+\newpage
+\begin{table}[h!]
+{\color{red}\caption{Unit testing overview}}
+\begin{center}
+{\color{red}\begin{tabular}{|c|c|c|c|}
+\hline
+Item No. & Function & Input & Output\\
+\hline
+UF-1 &  Player.reset(lifepoint) & Integers & \\
+\hline
+UF-2 & SmartBullet.move() &  & \\
+\hline
+UF-3 & SmartBullet.aim(player) & PlayerObject  & \\
+\hline
+UF-4 & SmartBullet.reset(x,y) & Integers & \\
+\hline
+UF-5 & Boss.move() &  & \\
+\hline
+UF-6 & Boss.show\_up() &  & \\
+\hline
+UF-7 & Boss.check\_death(lifepoint, score)  & integers &  \\
+\hline
+UF-8 & Boss.reset() &  &\\
+\hline
+UF-9 &  Bullet.move() & & \\
+\hline
+UF-10 & Bullet.reset() &  & \\
+\hline
+UF-11 & Enemy.move() &  & \\
+\hline
+UF-12 & Enemy.reset() &  & \\
+\hline
+UF-13 & Enemy.check\_death() &  & \\
+\hline
+UF-14 & Enemy.not\_collidable() &  & \\
+\hline
+UF-15 & Gift.move() &  &\\
+\hline
+\end{tabular}}
+\end{center}
+\label{default}
+\end{table}
+		
+\subsection{Unit testing of output files}	
+The only output file will be a text file with a single integer in its content. The expected output value should be strictly equal to actual output value in the unit test.	
+
+
+\newpage
+
+
+\end{document}
